@@ -6,7 +6,7 @@
 /*   By: mmarzouk <mmarzouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 11:59:27 by mmarzouk          #+#    #+#             */
-/*   Updated: 2021/06/12 13:39:39 by mmarzouk         ###   ########.fr       */
+/*   Updated: 2021/06/12 13:57:00 by mmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	one(int pid, t_pipex *pip)
 	close(pip->pipe[0]);
 	close(pip->pipe[1]);
 	execve(pip->p1, pip->cmd1, pip->env);
-	err(": command not found", 127, pip->cmd1[0]);
+	err("command not found", 127, pip->cmd1[0]);
 }
 
 void	two(int pid, t_pipex *pip)
@@ -45,7 +45,7 @@ void	two(int pid, t_pipex *pip)
 	close(pip->pipe[0]);
 	close(pip->pipe[1]);
 	execve(pip->p2, pip->cmd2, pip->env);
-	err(": command not found", 127, pip->cmd2[0]);
+	err("command not found", 127, pip->cmd2[0]);
 }
 
 void	close_wait(t_pipex *pip, int pid1, int pid2)

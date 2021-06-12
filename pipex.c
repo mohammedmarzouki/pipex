@@ -6,13 +6,13 @@
 /*   By: mmarzouk <mmarzouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 10:00:40 by mmarzouk          #+#    #+#             */
-/*   Updated: 2021/06/12 13:38:11 by mmarzouk         ###   ########.fr       */
+/*   Updated: 2021/06/12 14:23:10 by mmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static	char	*make_path(char **path, char	*cmd)
+static	char	*make_path(char **path, char *cmd)
 {
 	int		i;
 	char	*file;
@@ -42,7 +42,7 @@ static void	get_path(t_pipex *pip, char **env)
 	int		i;
 
 	i = -1;
-	p = ft_strdup("");
+	p = NULL;
 	while (env && env[++i])
 	{
 		if (!ft_strncmp("PATH=", env[i], 5))
