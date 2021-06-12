@@ -6,7 +6,7 @@
 /*   By: mmarzouk <mmarzouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 10:19:59 by mmarzouk          #+#    #+#             */
-/*   Updated: 2021/06/12 12:33:38 by mmarzouk         ###   ########.fr       */
+/*   Updated: 2021/06/12 13:42:13 by mmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ char	*ft_substr(char *s, int start, int lenght)
 {
 	int		i;
 	char	*s2;
-	
+
 	if (!s)
-		return(NULL);
+		return (NULL);
 	s2 = (char *)malloc((lenght + 1) * sizeof(char));
 	if (!s2)
 		err("allocation failed", FAILURE, NULL);

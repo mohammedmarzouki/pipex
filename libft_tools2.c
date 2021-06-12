@@ -6,13 +6,13 @@
 /*   By: mmarzouk <mmarzouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 11:27:51 by mmarzouk          #+#    #+#             */
-/*   Updated: 2021/06/12 12:33:19 by mmarzouk         ###   ########.fr       */
+/*   Updated: 2021/06/12 13:41:49 by mmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static int	wordcount(char  *s, char chr, int i, int c)
+static int	wordcount(char *s, char chr, int i, int c)
 {
 	while (s[i] && s[i] == chr)
 		i++;
@@ -27,14 +27,14 @@ static int	wordcount(char  *s, char chr, int i, int c)
 	return (c);
 }
 
-static char	*wordnext(char  *s, char c)
+static char	*wordnext(char *s, char c)
 {
 	while (*s && *s == c)
 		s++;
 	return ((char *)s);
 }
 
-static int	wordlen(char  *s, char c)
+static int	wordlen(char *s, char c)
 {
 	int	i;
 
@@ -44,7 +44,7 @@ static int	wordlen(char  *s, char c)
 	return (i);
 }
 
-char	**ft_split(char  *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**sp;
 	int		words;

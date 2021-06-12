@@ -6,7 +6,7 @@
 /*   By: mmarzouk <mmarzouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 10:00:40 by mmarzouk          #+#    #+#             */
-/*   Updated: 2021/06/12 13:08:34 by mmarzouk         ###   ########.fr       */
+/*   Updated: 2021/06/12 13:38:11 by mmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static	char	*make_path(char **path, char	*cmd)
 
 	i = -1;
 	if (!cmd)
-		return(ft_strdup(""));
+		return (ft_strdup(""));
 	file = ft_strjoin("/", cmd);
 	while (path[++i] && path[i][0])
 	{
@@ -36,11 +36,11 @@ static	char	*make_path(char **path, char	*cmd)
 	return (ft_strdup(cmd));
 }
 
-static void get_path(t_pipex *pip, char **env)
+static void	get_path(t_pipex *pip, char **env)
 {
-	char *p;
-	int i;
-	
+	char	*p;
+	int		i;
+
 	i = -1;
 	p = ft_strdup("");
 	while (env && env[++i])
@@ -52,10 +52,10 @@ static void get_path(t_pipex *pip, char **env)
 	free(p);
 }
 
-static  void    init(t_pipex *pip,char **argv, char **env)
+static	void	init(t_pipex *pip, char **argv, char **env)
 {
-	int error;
-	
+	int	error;
+
 	get_path(pip, env);
 	pip->env = env;
 	pip->f1 = ft_strdup(argv[1]);
@@ -69,9 +69,9 @@ static  void    init(t_pipex *pip,char **argv, char **env)
 		err(strerror(errno), 1, NULL);
 }
 
-int main(int argc, char **argv, char **env)
+int	main(int argc, char **argv, char **env)
 {
-	t_pipex pipex;
+	t_pipex	pipex;
 	int		pid1;
 	int		pid2;
 

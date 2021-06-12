@@ -6,7 +6,7 @@
 /*   By: mmarzouk <mmarzouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 11:59:27 by mmarzouk          #+#    #+#             */
-/*   Updated: 2021/06/12 13:11:58 by mmarzouk         ###   ########.fr       */
+/*   Updated: 2021/06/12 13:39:39 by mmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	one(int pid, t_pipex *pip)
 {
-	int input;
-	
+	int	input;
+
 	if (pid)
 		return ;
 	input = open(pip->f1, O_RDONLY, 0644);
@@ -32,8 +32,8 @@ void	one(int pid, t_pipex *pip)
 
 void	two(int pid, t_pipex *pip)
 {
-	int output;
-	
+	int	output;
+
 	if (pid)
 		return ;
 	output = open(pip->f2, O_WRONLY | O_CREAT | O_TRUNC, 0644);

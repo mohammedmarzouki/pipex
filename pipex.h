@@ -6,30 +6,29 @@
 /*   By: mmarzouk <mmarzouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 10:01:00 by mmarzouk          #+#    #+#             */
-/*   Updated: 2021/06/12 12:50:44 by mmarzouk         ###   ########.fr       */
+/*   Updated: 2021/06/12 13:35:52 by mmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PIPEX_H
+#ifndef PIPEX_H
 # define PIPEX_H
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <sys/wait.h>
-#include <errno.h>
-
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
+# include <sys/wait.h>
+# include <errno.h>
 
 /*  file descriptors  */
-#define STDIN 0
-#define STDOUT 1
-#define STDERR 2
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
 
 /*  exit  */
-#define FAILURE 1
-#define SUCCESS 0
+# define FAILURE 1
+# define SUCCESS 0
 
 typedef struct s_pipex
 {
@@ -43,8 +42,7 @@ typedef struct s_pipex
 	char	*f2;
 	int		pipe[2];
 	int		ext;
-}              t_pipex;
-
+}		t_pipex;
 
 /*  my_lib  */
 int		len(char *s);
@@ -58,6 +56,5 @@ char	*ft_strjoin(char *s1, char *s2);
 void	close_wait(t_pipex *pip, int pid1, int pid2);
 void	two(int pid, t_pipex *pip);
 void	one(int pid, t_pipex *pip);
-// void	d_print(char **s);
 
 #endif

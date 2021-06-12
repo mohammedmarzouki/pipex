@@ -6,7 +6,7 @@
 /*   By: mmarzouk <mmarzouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 10:18:13 by mmarzouk          #+#    #+#             */
-/*   Updated: 2021/06/12 13:14:12 by mmarzouk         ###   ########.fr       */
+/*   Updated: 2021/06/12 13:34:18 by mmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	err(char *s, int ext, char *cmd)
 	exit(ext);
 }
 
-int		len(char *s)
+int	len(char *s)
 {
 	int	len;
 
