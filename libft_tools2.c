@@ -6,7 +6,7 @@
 /*   By: mmarzouk <mmarzouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 11:27:51 by mmarzouk          #+#    #+#             */
-/*   Updated: 2021/06/11 14:03:03 by mmarzouk         ###   ########.fr       */
+/*   Updated: 2021/06/12 12:33:19 by mmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	**ft_split(char  *s, char c)
 	words = wordcount(s, c, 0, 0);
 	sp = (char **)malloc((words + 1) * sizeof(char *));
 	if (!sp)
-		err("pipex : allocation failed\n", FAILURE);
+		err("allocation failed", FAILURE, NULL);
 	i = 0;
 	while (i < words)
 	{

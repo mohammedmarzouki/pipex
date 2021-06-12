@@ -6,7 +6,7 @@
 /*   By: mmarzouk <mmarzouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 10:19:59 by mmarzouk          #+#    #+#             */
-/*   Updated: 2021/06/11 13:27:22 by mmarzouk         ###   ########.fr       */
+/*   Updated: 2021/06/12 12:33:38 by mmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_strdup(char *s1)
 	i = 0;
 	s2 = (char *)malloc((len(s1) + 1) * sizeof(char));
 	if (!s2)
-		err("pipex : allocation failed\n", FAILURE);
+		err("allocation failed", FAILURE, NULL);
 	while (s1[i])
 	{
 		s2[i] = s1[i];
@@ -53,7 +53,7 @@ char	*ft_substr(char *s, int start, int lenght)
 		return(NULL);
 	s2 = (char *)malloc((lenght + 1) * sizeof(char));
 	if (!s2)
-		err("pipex : allocation failed\n", FAILURE);
+		err("allocation failed", FAILURE, NULL);
 	i = 0;
 	if (start < len(s))
 	{
@@ -77,7 +77,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	s3 = (char *)malloc((len(s1) + len(s2) + 1) * sizeof(char));
 	if (!s3)
-		err("pipex : allocation failed\n", FAILURE);
+		err("allocation failed", FAILURE, NULL);
 	i = 0;
 	while (*s1)
 	{

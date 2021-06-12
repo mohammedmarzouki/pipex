@@ -6,7 +6,7 @@
 /*   By: mmarzouk <mmarzouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 10:00:40 by mmarzouk          #+#    #+#             */
-/*   Updated: 2021/06/11 16:12:23 by mmarzouk         ###   ########.fr       */
+/*   Updated: 2021/06/12 13:08:34 by mmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ static	char	*make_path(char **path, char	*cmd)
 	char	*tmp;
 
 	i = -1;
+	if (!cmd)
+		return(ft_strdup(""));
 	file = ft_strjoin("/", cmd);
-	while(path[++i] && path[i][0])
+	while (path[++i] && path[i][0])
 	{
 		tmp = ft_strjoin(path[i], file);
-		if(open(tmp, O_RDONLY) > 0)
+		if (open(tmp, O_RDONLY) > 0)
 		{
 			free(file);
 			return (tmp);
@@ -31,7 +33,7 @@ static	char	*make_path(char **path, char	*cmd)
 		free(tmp);
 	}
 	free(file);
-	return(ft_strdup(cmd));
+	return (ft_strdup(cmd));
 }
 
 static void get_path(t_pipex *pip, char **env)
@@ -41,9 +43,9 @@ static void get_path(t_pipex *pip, char **env)
 	
 	i = -1;
 	p = ft_strdup("");
-	while(env && env[++i])
+	while (env && env[++i])
 	{
-		if(!ft_strncmp("PATH=", env[i], 5))
+		if (!ft_strncmp("PATH=", env[i], 5))
 			p = ft_substr(env[i], 5, len(env[i]));
 	}
 	pip->path = ft_split(p, ':');
@@ -52,35 +54,34 @@ static void get_path(t_pipex *pip, char **env)
 
 static  void    init(t_pipex *pip,char **argv, char **env)
 {
+	int error;
+	
 	get_path(pip, env);
+	pip->env = env;
 	pip->f1 = ft_strdup(argv[1]);
 	pip->cmd1 = ft_split(argv[2], ' ');
 	pip->p1 = make_path(pip->path, pip->cmd1[0]);
 	pip->cmd2 = ft_split(argv[3], ' ');
-	print("dcjyvb",1);
-	d_print(pip->cmd2);
 	pip->p2 = make_path(pip->path, pip->cmd2[0]);
 	pip->f2 = ft_strdup(argv[4]);
+	error = pipe(pip->pipe);
+	if (error)
+		err(strerror(errno), 1, NULL);
 }
 
 int main(int argc, char **argv, char **env)
 {
 	t_pipex pipex;
+	int		pid1;
+	int		pid2;
 
 	if (argc != 5)
-		err("pipex : input in wrong format\n", 1);
+		err("input in wrong format", 1, NULL);
 	init(&pipex, argv, env);
-	printf("file1 ->{%s}\n",pipex.f1);
-	printf("CMD1 {\n");
-	d_print(pipex.cmd1);
-	printf("}\n");
-	printf("path ->{%s}\n",pipex.p1);
-	printf("CMD2 {\n");
-	d_print(pipex.cmd2);
-	printf("}\n");
-	printf("path ->{%s}\n",pipex.p2);
-	printf("file2 ->{%s}\n",pipex.f2);
-	printf("PATH {\n");
-	d_print(pipex.path);
-	printf("}\n");
+	pid1 = fork();
+	one(pid1, &pipex);
+	pid2 = fork();
+	two(pid2, &pipex);
+	close_wait(&pipex, pid1, pid2);
+	return (pipex.ext);
 }
